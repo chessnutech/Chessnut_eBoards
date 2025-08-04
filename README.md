@@ -11,6 +11,7 @@
   - Characteristic (Write commands): `1b7e8272-2877-41c3-b46e-cf057c562023`  
   - Characteristic (Response notifications): `1b7e8273-2877-41c3-b46e-cf057c562023`  
 
+  > **Notice:** If you cannot receive the full FEN data, please set the BLE MTU to 500 after the BLE connection is established.
 ---
 
 #### **2. Obtaining FEN (Board Position)**
@@ -70,7 +71,7 @@ Send a **34-byte command** to the Operation Write Characteristic:
 - **Command** (Write Characteristic):  
   `[0x29, 0x01, 0x00]` (3 bytes).  
 - **Response** (Notification Characteristic):  
-  `[0x2a, batteryLevel]` 
+  `[0x2a, 0x02, batteryLevel, reserved]` 
   - `batteryLevel.bit[7]`: `1`: Charging, `0`: Not charging.
   - `batteryLevel.bit[0..6]`: `0`–`100` (percentage).  
 
